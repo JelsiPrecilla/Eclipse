@@ -1,0 +1,6 @@
+package com.stepDefinition;
+
+public class StepDefinition {
+PageObjectManagers pom = new PageObjectManagers();
+
+}

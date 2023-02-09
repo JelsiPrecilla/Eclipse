@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;testng.xml&apos; to &apos;Facebook&apos;" description="Move &apos;testng.xml&apos; to &apos;Facebook&apos;" destination="/Facebook" element1="/ExtentReport/testng.xml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1675850622581" updateReferences="true"/>
+</session>

@@ -1,0 +1,209 @@
+package com.base;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class BaseClass {
+	public static WebDriver driver;
+
+	// ScreenShot
+	public byte[] screenshotAsbyte() {
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		byte[] b = screenshot.getScreenshotAs(OutputType.BYTES);
+		return b;
+	}
+	//getDriver
+	public static WebDriver getDriver(int Browser) {
+      int browser;
+      browser=1;
+      switch(browser) {
+      case 1:WebDriverManager.chromedriver().setup();
+		 driver = new ChromeDriver();
+		break;
+      
+      }
+      return driver;
+      }
+	
+	// loadurl
+	public static void loadUrl(String url) {
+
+		driver.get(url);
+	}
+
+	// getTitle
+	public void getTitle() {
+
+		driver.getTitle();
+	}
+
+	// getCurrentUrl
+	public void getCurrentUrl() {
+		driver.getCurrentUrl();
+
+	}
+
+	// sendKeys
+	public void sendkeys(WebElement element, String text) {
+		element.sendKeys(text);
+
+	}
+
+	// click
+	public void click(WebElement element) {
+		element.click();
+	}
+
+	// getText
+	public String getText(WebElement element) {
+		String text = element.getText();
+		return text;
+	}
+
+	// getAttributeByValue
+	public String getAttributeByValue(WebElement element) {
+		String attribute = element.getAttribute("value");
+		return attribute;
+
+	}
+
+	// getAttributeOtherThanValue
+	public String getAttributeOtherThanValue(WebElement element, String attributeName) {
+		String attribute = element.getAttribute(attributeName);
+		return attribute;
+
+	}
+
+	// findLocatorById
+	public WebElement findLoatorById(String attributeValue) {
+		WebElement findElement = driver.findElement(By.id(attributeValue));
+		return findElement;
+	}
+
+	// findLocatorByName
+	public WebElement findLoatorByName(String attributeValue) {
+		WebElement findElement = driver.findElement(By.name(attributeValue));
+		return findElement;
+	}
+
+	// findLocatorByclassName
+	public WebElement findLoatorByclassName(String attributeValue) {
+		WebElement findElement = driver.findElement(By.className(attributeValue));
+		return findElement;
+	}
+
+	// xpath
+	public WebElement findLocatorByXpath(String attributeValue) {
+		WebElement findElement = driver.findElement(By.xpath(attributeValue));
+		return findElement;
+
+	}
+
+	// sleep
+	public void sleep(int millis) throws InterruptedException {
+		Thread.sleep(millis);
+
+	}
+
+	// dragAndDrop
+	public void moveToElement(WebElement source, WebElement target) {
+		Actions actions = new Actions(driver);
+		actions.dragAndDrop(source, target);
+
+	}
+
+	// MoveToElement
+	public void dragAndDrop(WebElement target) {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(target);
+	}
+
+	// contextClick(rightclick)
+	public void contextClick(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.contextClick(element).perform();
+	}
+       
+	// robot keyPress
+	public void robotKeyPress(int keycode) throws AWTException {
+		Robot robot = new Robot();
+		robot.keyPress(keycode);
+	}
+
+	// robot keyRelease
+	public void robotKeyRelease(int keycode) throws AWTException {
+		Robot robot = new Robot();
+		robot.keyRelease(keycode);
+	}
+
+	// KeyDown
+	public void keyDown(CharSequence key) {
+		Actions actions = new Actions(driver);
+		actions.keyDown(key);
+	}
+
+	// KeyUp
+	public void keyUp(CharSequence key) {
+		Actions actions = new Actions(driver);
+		actions.keyUp(key);
+	}
+
+	// double click
+	public void doubleClick(WebElement element) {
+		Actions actions = new Actions(driver);
+		actions.doubleClick(element).perform();
+	}
+
+	// Accept Alert
+	public void acceptAlert() {
+		Alert al = driver.switchTo().alert();
+		al.accept();
+	}
+
+	// Dismiss Alert
+	public void dismissAlert() {
+		Alert al = driver.switchTo().alert();
+		al.dismiss();
+	}
+
+
+	// Take Screenshot
+	public File screenShotFile() {
+		TakesScreenshot screenshot = (TakesScreenshot) driver;
+		File file = screenshot.getScreenshotAs(OutputType.FILE);
+		return file;
+	}
+    //Take ScreenshotforWebElement
+	public File screenShotWebElement(WebElement element) {
+		File file = element.getScreenshotAs(OutputType.FILE);
+		return file;
+		
+	}
+	//Create newFile
+	public File createNewFile(String Location) throws IOException {
+		File file = new File(Location);
+		file.createNewFile();
+		return file;
+
+	}
+	//Launching Url using Navigate
+	public void urlNavigation(String url) {
+    driver.navigate().to(url);
+	}
+	//
+	
+}

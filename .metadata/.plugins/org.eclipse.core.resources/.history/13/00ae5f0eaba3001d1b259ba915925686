@@ -1,0 +1,8 @@
+package com.extent;
+
+import com.base.BaseClass;
+
+public class sample extends BaseClass {
+	
+	
+}

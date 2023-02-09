@@ -1,0 +1,12 @@
+package com.extent;
+
+import com.base.BaseClass;
+
+public class sample extends BaseClass {
+	
+	public static void main(String[] args) {
+		getDriver(1);
+		loadUrl("https://www.google.com/");
+	}
+
+}

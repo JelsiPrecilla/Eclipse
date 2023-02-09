@@ -1,0 +1,22 @@
+package com.runner;
+
+import org.junit.AfterClass;
+import org.junit.runner.RunWith;
+
+import com.report.Report;
+
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+
+
+
+@RunWith(Cucumber.class)
+//@RunWith(Cucumber.class)
+//@CucumberOptions(features= {"src/test/resources"}, glue= "com.stepDefinition",plugin = {"json:target/reports/json/report.json"},dryRun=true)
+@CucumberOptions(features= {"src/test/resources"},glue="com.stepDefinition",plugin= {"json:target/reports/json/report.json"},dryRun=true)
+public class TestRunner {
+	@AfterClass
+	public static void generateReport(){
+	
+	//	Report.generateJvmReport("C:\\Users\\Dell\\eclipse-workspace\\CucumberProject\\target\\reports\\json\\report.json");
+}}

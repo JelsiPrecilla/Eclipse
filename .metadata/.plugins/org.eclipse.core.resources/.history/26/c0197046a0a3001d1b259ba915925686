@@ -1,0 +1,66 @@
+package com.stepDefinition;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.time.Duration;
+import cucumber.api.PendingException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import cucumber.api.java.en.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class StepDefinition {
+
+	@Given("^User is on the loginpage$")
+	public void user_is_on_the_loginpage() throws Throwable  {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@When("^User should login \"([^\"]*)\",\"([^\"]*)\"$")
+	public void user_should_login(String arg1, String arg2) throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+	@Then("^User should create new project$")
+	public void user_should_create_new_project() throws Throwable {
+	    // Write code here that turns the phrase above into concrete actions
+	    throw new PendingException();
+	}
+
+
+
+
+
+
+	
+		
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://app.flexifunnels.com/login");
+		
+	  WebElement user =	driver.findElement(By.id("email"));
+		user.sendKeys("ashokdhasan@gmail.com");
+		
+		WebElement pass =	driver.findElement(By.id("password"));
+		pass.sendKeys("flexi@321#");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_TAB);
+		robot.keyRelease(KeyEvent.VK_TAB);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	
+}
+}

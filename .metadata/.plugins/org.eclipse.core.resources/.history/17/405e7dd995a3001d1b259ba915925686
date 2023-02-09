@@ -1,0 +1,8 @@
+Feature: Verifying Flexifunnels page
+
+  Scenario: Verifying flexifunnels login page
+    Given User is on the loginpage
+    When User should login 
+    Then User should create new project
+
+ 

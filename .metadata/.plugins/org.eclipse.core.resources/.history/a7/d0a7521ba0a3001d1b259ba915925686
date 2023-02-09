@@ -1,0 +1,103 @@
+package com.base;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class BaseClass {
+public static WebDriver driver;
+	
+	//ScreenShot
+	public byte[] screenshotAsbyte() {
+      TakesScreenshot screenshot = (TakesScreenshot)driver;
+      byte[] b = screenshot.getScreenshotAs(OutputType.BYTES);
+      return b;
+	}
+	
+	//loadurl
+	public static void loadUrl(String url) {
+           
+		driver.get(url);
+	}
+	//getTitle
+	public void getTitle() {
+
+		driver.getTitle();
+		}
+	//getCurrentUrl
+	public void getCurrentUrl() {
+		driver.getCurrentUrl();
+
+	}
+	//sendKeys
+	public void sendkeys(WebElement element,String text) {
+		element.sendKeys(text);
+         
+	}
+	//click
+	public void click(WebElement element) {
+        element.click();
+	}
+	//getText
+	public String getText(WebElement element) {
+         String text = element.getText();
+         return text;
+	}
+	//getAttributeByValue
+	public String getAttributeByValue(WebElement element) {
+          String attribute = element.getAttribute("value");
+          return attribute;
+          
+	}
+	//getAttributeOtherThanValue
+	public String getAttributeOtherThanValue(WebElement element,String attributeName) {
+        String attribute = element.getAttribute(attributeName);
+        return attribute;
+        
+	}
+	
+	//findLocatorById
+	public WebElement findLoatorById(String attributeValue ) {
+            WebElement findElement = driver.findElement(By.id(attributeValue));
+            return findElement;
+	}
+	//findLocatorByName
+	public WebElement findLoatorByName(String attributeValue ) {
+        WebElement findElement = driver.findElement(By.name(attributeValue));
+        return findElement;
+}
+	
+	//findLocatorByclassName
+	public WebElement findLoatorByclassName(String attributeValue ) {
+        WebElement findElement = driver.findElement(By.className(attributeValue));
+        return findElement;
+}
+	//xpath
+	public WebElement findLocatorByXpath(String attributeValue) {
+		   WebElement findElement = driver.findElement(By.xpath(attributeValue));
+	        return findElement;
+
+	}
+	//sleep
+	public void sleep(int millis) throws InterruptedException {
+		Thread.sleep(millis);
+
+	}
+	//dragAndDrop
+	public void moveToElement(WebElement source,WebElement target) {
+		Actions actions = new Actions(driver);
+		actions.dragAndDrop(source, target);
+
+	}
+	//MoveToElement
+	public void dragAndDrop(WebElement target) {
+		Actions actions = new Actions(driver);
+        actions.moveToElement(target);
+	}
+	
+	
+
+}

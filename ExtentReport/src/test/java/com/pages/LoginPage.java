@@ -1,0 +1,86 @@
+package com.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.base.BaseClass;
+
+public class LoginPage extends BaseClass {
+	public LoginPage() {
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(id = "email")
+	private WebElement userId;
+
+	@FindBy(id = "password")
+	private WebElement password;
+
+	@FindBy(xpath = "//div[@class='uf-1e8hq-modal-inner']/child::button[@class='uf-1e8hq-close-button']")
+	private WebElement ad2;
+
+	@FindBy(xpath = "//button[@class='btn btn-ff-style fw-500 ml-2']")
+	private WebElement createProject;
+	@FindBy(xpath = "//div[@class='feature_child']")
+	private WebElement sales;
+	@FindBy(xpath = "//div[@class='uf-1e8hq-notification-inner']/child::button")
+	private WebElement list;
+	@FindBy(xpath = "//input[@class='form-control pnameval ng-pristine ng-untouched ng-valid ng-empty']")
+	private WebElement pname;
+	@FindBy(xpath = "//span[@ng-hide='saving']")
+	private WebElement create;
+
+	@FindBy(xpath = "//div[@class='row mx-0 align-items-center ff_sub_hdr_mn_div']")
+	private WebElement ss;
+
+	public WebElement getUserId() {
+		return userId;
+	}
+
+	public WebElement getPassword() {
+		return password;
+	}
+
+	public WebElement getAd2() {
+		return ad2;
+	}
+
+	public WebElement getCreateProject() {
+		return createProject;
+	}
+
+	public WebElement getSales() {
+		return sales;
+	}
+
+	public WebElement getList() {
+		return list;
+	}
+
+	public WebElement getPname() {
+		return pname;
+	}
+
+	public WebElement getCreate() {
+		return create;
+	}
+
+	public WebElement getSs() {
+		return ss;
+	}
+	
+	public void methodLogin() {
+		getDriver(1);
+		loadUrl("https://app.flexifunnels.com/login");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

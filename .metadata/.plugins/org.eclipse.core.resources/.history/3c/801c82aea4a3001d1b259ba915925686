@@ -1,0 +1,197 @@
+package com.base;
+
+import java.io.File;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class BaseClass {
+public static WebDriver driver;
+	
+	//ScreenShot
+	public byte[] screenshotAsbyte() {
+      TakesScreenshot screenshot = (TakesScreenshot)driver;
+      byte[] b = screenshot.getScreenshotAs(OutputType.BYTES);
+      return b;
+	}
+	
+	//loadurl
+	public static void loadUrl(String url) {
+           
+		driver.get(url);
+	}
+	//getTitle
+	public void getTitle() {
+
+		driver.getTitle();
+		}
+	//getCurrentUrl
+	public void getCurrentUrl() {
+		driver.getCurrentUrl();
+
+	}
+	//sendKeys
+	public void sendkeys(WebElement element,String text) {
+		element.sendKeys(text);
+         
+	}
+	//click
+	public void click(WebElement element) {
+        element.click();
+	}
+	//getText
+	public String getText(WebElement element) {
+         String text = element.getText();
+         return text;
+	}
+	//getAttributeByValue
+	public String getAttributeByValue(WebElement element) {
+          String attribute = element.getAttribute("value");
+          return attribute;
+          
+	}
+	//getAttributeOtherThanValue
+	public String getAttributeOtherThanValue(WebElement element,String attributeName) {
+        String attribute = element.getAttribute(attributeName);
+        return attribute;
+        
+	}
+	
+	//findLocatorById
+	public WebElement findLoatorById(String attributeValue ) {
+            WebElement findElement = driver.findElement(By.id(attributeValue));
+            return findElement;
+	}
+	//findLocatorByName
+	public WebElement findLoatorByName(String attributeValue ) {
+        WebElement findElement = driver.findElement(By.name(attributeValue));
+        return findElement;
+}
+	
+	//findLocatorByclassName
+	public WebElement findLoatorByclassName(String attributeValue ) {
+        WebElement findElement = driver.findElement(By.className(attributeValue));
+        return findElement;
+}
+	//xpath
+	public WebElement findLocatorByXpath(String attributeValue) {
+		   WebElement findElement = driver.findElement(By.xpath(attributeValue));
+	        return findElement;
+
+	}
+	//sleep
+	public void sleep(int millis) throws InterruptedException {
+		Thread.sleep(millis);
+
+	}
+	//dragAndDrop
+	public void moveToElement(WebElement source,WebElement target) {
+		Actions actions = new Actions(driver);
+		actions.dragAndDrop(source, target);
+
+	}
+	//MoveToElement
+	public void dragAndDrop(WebElement target) {
+		Actions actions = new Actions(driver);
+        actions.moveToElement(target);
+	}
+	// 18.contextClick(rightclick)
+			public void contextClick(WebElement element) {
+				Actions actions = new Actions(driver);
+				actions.contextClick(element).perform();
+			}
+
+			// 19.robot keyPress
+			public void robotKeyPress(int keycode) throws AWTException {
+				Robot robot = new Robot();
+				robot.keyPress(keycode);
+			}
+
+			// 20.robot keyRelease
+			public void robotKeyRelease(int keycode) throws AWTException {
+				Robot robot = new Robot();
+				robot.keyRelease(keycode);
+			}
+
+			// 21.KeyDown
+			public void keyDown(CharSequence key) {
+				Actions actions = new Actions(driver);
+				actions.keyDown(key);
+			}
+
+			// 22.KeyUp
+			public void keyUp(CharSequence key) {
+				Actions actions = new Actions(driver);
+				actions.keyUp(key);
+			}
+
+			// 23.SendKeys in Actions
+			public void sendkeysinactions(WebElement element, CharSequence keycode, String keysToSend) {
+				element.sendKeys(keysToSend, keycode);
+			}
+
+			// 24.double click
+			public void doubleClick(WebElement element) {
+				Actions actions = new Actions(driver);
+				actions.doubleClick(element).perform();
+			}
+
+			// 25.Accept Alert
+			public void acceptAlert() {
+				Alert al = driver.switchTo().alert();
+				al.accept();
+			}
+
+			// 26.Dismiss Alert
+			public void dismissAlert() {
+				Alert al = driver.switchTo().alert();
+				al.dismiss();
+			}
+
+			// 27.JavaScript insert text
+			public void insertTextJs(WebElement element, String text) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].setAttribute('value'," + text + ")", element);
+			}
+
+			// 28.JavaScript print text
+			public Object printTextJs(WebElement element) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				Object executeScript = executor.executeScript("return arguemnt[0].getAttribute('value')", element);
+				return executeScript;
+			}
+
+			// 29.JavaScript click
+			public void clickjs(WebElement element) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("argument[0],click()", element);
+			}
+
+			// 30.Scroll Down JavaScript
+			public void scrollDownJs(WebElement element) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("argument[0].scrollIntoView(true)", element);
+			}
+
+			// 31.Scroll Up JavaScript
+			public void scrolUpJs(WebElement element) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("argument[0].scrollIntoView(false)", element);
+			}
+
+			// 32.Take Screenshot
+			public File screenShot() {
+				TakesScreenshot screenshot = (TakesScreenshot) driver;
+				File file = screenshot.getScreenshotAs(OutputType.FILE);
+				return file;
+			}
+
+	
+	
+
+}
